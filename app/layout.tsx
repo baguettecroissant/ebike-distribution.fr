@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "./components/Header";
+import { WebsiteSchema, OrganizationSchema } from "./components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
@@ -17,6 +19,8 @@ export const metadata: Metadata = {
     "vélo électrique pliant",
     "vélo électrique ville",
     "batterie vélo électrique",
+    "guide achat vélo électrique",
+    "avis vélo électrique amazon",
   ],
   metadataBase: new URL("https://ebike-distribution.fr"),
   alternates: { canonical: "/" },
@@ -27,6 +31,7 @@ export const metadata: Metadata = {
     title: "eBike Distribution — Comparatif Vélos Électriques 2026",
     description:
       "Guide expert et comparatif des meilleurs vélos électriques 2026. Trouvez le vélo électrique idéal.",
+    images: [{ url: "/images/home-hero.png", width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
@@ -39,29 +44,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <head>
+        <WebsiteSchema />
+        <OrganizationSchema />
+      </head>
       <body>
         {/* Header */}
-        <header className="header">
-          <div className="header-inner">
-            <a href="/" className="logo">
-              <span className="logo-icon">⚡</span>
-              eBike&nbsp;<span>Distribution</span>
-            </a>
-
-            <nav className="nav">
-              <a href="/meilleur-velo-electrique">Comparatifs</a>
-              <a href="/meilleur-velo-electrique-ville">Ville</a>
-              <a href="/meilleur-velo-electrique-pliant">Pliant</a>
-              <a href="/meilleur-vtt-electrique">VTT</a>
-              <a href="/guides">Guides</a>
-              <a href="/meilleur-velo-electrique" className="nav-cta btn">
-                🔍 Trouver mon vélo
-              </a>
-            </nav>
-
-            <button className="mobile-toggle" aria-label="Menu">☰</button>
-          </div>
-        </header>
+        <Header />
 
         {/* Main */}
         <main>{children}</main>
@@ -96,13 +85,18 @@ export default function RootLayout({
                 <h4>Guides</h4>
                 <ul>
                   <li><a href="/guide/comment-choisir-velo-electrique">Comment choisir</a></li>
-                  <li><a href="/guide/reconditionnement-batterie-velo-electrique">Reconditionnement batterie</a></li>
+                  <li><a href="/guide/reconditionnement-batterie-velo-electrique">Batterie : reconditionnement</a></li>
+                  <li><a href="/guide/aides-etat-achat-velo-electrique">Aides de l&apos;État 2026</a></li>
+                  <li><a href="/guide/entretien-velo-electrique">Entretien VAE</a></li>
+                  <li><a href="/guide/legislation-assurance-velo-electrique">Législation &amp; assurance</a></li>
                 </ul>
               </div>
 
               <div className="footer-col">
                 <h4>Informations</h4>
                 <ul>
+                  <li><a href="/a-propos">À propos</a></li>
+                  <li><a href="/guides">Tous les guides</a></li>
                   <li><a href="/mentions-legales">Mentions légales</a></li>
                   <li><a href="/politique-de-confidentialite">Confidentialité</a></li>
                 </ul>

@@ -147,7 +147,8 @@ export const products: Product[] = [
     price: 419,
     rating: 4.1,
     reviewCount: 678,
-    image: "/images/dyu-d3f.svg",
+    image: "/images/products/dyu-d3f.jpg",
+    affiliateUrl: "https://amzn.to/41316Qx",
     category: "pliant",
     autonomy: "25-50 km",
     motor: "250W",
@@ -167,31 +168,32 @@ export const products: Product[] = [
     summary: "Le DYU D3F est le vélo électrique le plus compact du marché. Avec seulement 17 kg et ses roues de 14 pouces, il se glisse partout : bureau, coffre de voiture, placard."
   },
   {
-    id: "eskute-netuno-plus",
-    asin: "B0CR1N2J5L",
-    name: "ESKUTE Netuno Plus VTT Électrique 27.5 Pouces",
-    brand: "ESKUTE",
-    price: 899,
-    rating: 4.5,
-    reviewCount: 423,
-    image: "/images/eskute-netuno.svg",
+    id: "eleglide-mopride-2",
+    asin: "B0C8C6TYDP",
+    name: "Eleglide Mopride 2 VTT Électrique 27.5 Pouces",
+    brand: "Eleglide",
+    price: 849,
+    rating: 4.3,
+    reviewCount: 751,
+    image: "/images/products/eleglide-mopride2.jpg",
+    affiliateUrl: "https://amzn.to/4uQb7hA",
     category: "vtt",
     badge: "Top VTT",
-    autonomy: "60-120 km",
-    motor: "250W Bafang",
-    weight: "24 kg",
+    autonomy: "Jusqu'à 150 km",
+    motor: "250W",
+    weight: "26 kg",
     speed: "25 km/h",
     pros: [
-      "Moteur Bafang de qualité",
-      "Grande roue 27.5 pouces",
-      "Excellente autonomie",
-      "Freins à disque hydrauliques"
+      "Autonomie exceptionnelle (batterie 18Ah)",
+      "Freins à disque hydrauliques puissants",
+      "Suspension hydraulique verrouillable",
+      "Pneus larges (27.5 x 2.35) très confortables"
     ],
     cons: [
-      "Limité à 250W",
+      "Assez lourd",
       "Pas de suspension arrière"
     ],
-    summary: "L'ESKUTE Netuno Plus se distingue par son moteur Bafang réputé pour sa fiabilité et ses freins à disque hydrauliques. Un VTT électrique sérieux pour les sorties nature."
+    summary: "L'Eleglide Mopride 2 est un VTT électrique ultra-endurant avec sa batterie de 18Ah offrant jusqu'à 150 km d'autonomie. Ses freins hydrauliques et sa suspension de qualité garantissent des sorties nature en toute sécurité."
   },
   {
     id: "fischer-cita-2206",
@@ -220,14 +222,15 @@ export const products: Product[] = [
     summary: "Le FISCHER Cita 2.2i est un vélo électrique de ville haut de gamme fabriqué par la marque allemande réputée. Avec une autonomie pouvant atteindre 140 km, c'est le champion de l'endurance."
   },
   {
-    id: "rcb-rv10",
+    id: "rcb-gk4",
     asin: "B0CYL3JVLN",
-    name: "RCB Vélo Électrique Pliant 20 Pouces RV10",
+    name: "RCB GK4 Vélo Électrique Pliant 20 Pouces",
     brand: "RCB",
     price: 549,
     rating: 4.2,
     reviewCount: 945,
-    image: "/images/rcb-rv10.svg",
+    image: "/images/products/rcb-gk4.jpg",
+    affiliateUrl: "https://amzn.to/47wIXOR",
     category: "pliant",
     autonomy: "40-80 km",
     motor: "250W",
@@ -243,7 +246,7 @@ export const products: Product[] = [
       "Un peu lourd pour un pliant (24 kg)",
       "Finitions perfectibles"
     ],
-    summary: "Le RCB RV10 est un pliant populaire sur Amazon qui offre un bon compromis entre prix et autonomie. Sa batterie amovible est un vrai plus pour la recharge au bureau."
+    summary: "Le RCB GK4 est un pliant populaire sur Amazon qui offre un bon compromis entre prix et autonomie. Sa batterie amovible est un vrai plus pour la recharge au bureau."
   }
 ];
 

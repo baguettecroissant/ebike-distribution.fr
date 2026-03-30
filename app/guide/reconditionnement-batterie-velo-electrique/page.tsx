@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FAQ } from "../../components/FAQ";
+import { ArticleSchema, FAQSchema, BreadcrumbSchema } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Reconditionnement Batterie Vélo Électrique : Guide Complet 2026",
@@ -17,6 +18,10 @@ const faqItems = [
 export default function RecondBatteriePage() {
   return (
     <>
+      <ArticleSchema title="Reconditionnement Batterie Vélo Électrique" description="Guide complet du reconditionnement de batterie VAE." url="/guide/reconditionnement-batterie-velo-electrique" image="/images/guides/batterie-reconditionnement.png" datePublished="2026-01-20" dateModified="2026-03-30" />
+      <FAQSchema items={faqItems} />
+      <BreadcrumbSchema items={[{ name: "Accueil", url: "/" }, { name: "Guides", url: "/guides" }, { name: "Reconditionnement batterie", url: "/guide/reconditionnement-batterie-velo-electrique" }]} />
+
       <div className="article-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -190,6 +195,17 @@ export default function RecondBatteriePage() {
         <section className="section" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <div className="section-header"><h2>❓ Questions fréquentes</h2></div>
           <FAQ items={faqItems} />
+        </section>
+
+        <section style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+          <h2>🔗 Voir aussi</h2>
+          <ul style={{ paddingLeft: "1.5rem", lineHeight: 2 }}>
+            <li><a href="/meilleur-velo-electrique">Comparatif vélos électriques 2026</a></li>
+            <li><a href="/guide/comment-choisir-velo-electrique">Guide d&apos;achat vélo électrique</a></li>
+            <li><a href="/guide/entretien-velo-electrique">Comment entretenir son VAE</a></li>
+            <li><a href="/guide/aides-etat-achat-velo-electrique">Aides financières pour l&apos;achat</a></li>
+            <li><a href="/guide/legislation-assurance-velo-electrique">Législation et assurance</a></li>
+          </ul>
         </section>
       </div>
     </>

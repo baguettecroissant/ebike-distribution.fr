@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProductsByCategory } from "../data/products";
 import { ComparisonTable, FeaturedProduct, ProsConsBox } from "../components/ProductComponents";
 import { FAQ } from "../components/FAQ";
+import { FAQSchema, BreadcrumbSchema } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Meilleur Vélo Électrique Pliant 2026 : Comparatif & Avis",
@@ -21,6 +22,13 @@ export default function VeloPliantPage() {
 
   return (
     <>
+      <FAQSchema items={faqItems} />
+      <BreadcrumbSchema items={[
+        { name: "Accueil", url: "/" },
+        { name: "Comparatifs", url: "/meilleur-velo-electrique" },
+        { name: "Vélo pliant", url: "/meilleur-velo-electrique-pliant" }
+      ]} />
+
       <div className="article-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -85,11 +93,23 @@ export default function VeloPliantPage() {
           <FAQ items={faqItems} />
         </section>
 
-        <div className="cta-banner" style={{ marginBottom: "3rem" }}>
+        <div className="cta-banner" style={{ marginBottom: "1rem" }}>
           <h2>🔄 Compact et électrique !</h2>
           <p>Découvrez les vélos pliants au meilleur prix sur Amazon.</p>
-          <a href={`https://www.amazon.fr/dp/${featured.asin}?tag=ebike-distrib-21`} target="_blank" rel="nofollow noopener sponsored" className="btn btn-amazon">🛒 Voir le meilleur prix</a>
+          <a href={featured.affiliateUrl || `https://www.amazon.fr/dp/${featured.asin}?tag=ebike-distrib-21`} target="_blank" rel="nofollow noopener sponsored" className="btn btn-amazon">🛒 Voir le meilleur prix</a>
         </div>
+
+        <section className="section">
+          <h2>🔗 Voir aussi</h2>
+          <ul style={{ paddingLeft: "1.5rem", lineHeight: 2 }}>
+            <li><a href="/meilleur-velo-electrique">Comparatif général vélos électriques 2026</a></li>
+            <li><a href="/meilleur-velo-electrique-ville">Meilleurs vélos électriques de ville</a></li>
+            <li><a href="/meilleur-vtt-electrique">Meilleurs VTT électriques</a></li>
+            <li><a href="/guide/comment-choisir-velo-electrique">Guide d&apos;achat vélo électrique</a></li>
+            <li><a href="/guide/aides-etat-achat-velo-electrique">Aides financières pour l&apos;achat d&apos;un VAE</a></li>
+            <li><a href="/guide/entretien-velo-electrique">Comment entretenir son vélo électrique</a></li>
+          </ul>
+        </section>
       </div>
     </>
   );

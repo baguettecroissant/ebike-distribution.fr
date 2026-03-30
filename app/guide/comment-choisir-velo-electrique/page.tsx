@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FAQ } from "../../components/FAQ";
+import { ArticleSchema, FAQSchema, BreadcrumbSchema } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Comment Choisir son Vélo Électrique en 2026 : Le Guide Complet",
@@ -16,6 +17,21 @@ const faqItems = [
 export default function GuideChoixPage() {
   return (
     <>
+      <ArticleSchema 
+        title="Comment Choisir son Vélo Électrique en 2026" 
+        description="Guide complet pour choisir votre vélo électrique en 2026."
+        url="/guide/comment-choisir-velo-electrique"
+        image="/images/guides/choisir-velo.png"
+        datePublished="2026-01-15"
+        dateModified="2026-03-30"
+      />
+      <FAQSchema items={faqItems} />
+      <BreadcrumbSchema items={[
+        { name: "Accueil", url: "/" },
+        { name: "Guides", url: "/guides" },
+        { name: "Comment choisir", url: "/guide/comment-choisir-velo-electrique" }
+      ]} />
+
       <div className="article-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -101,14 +117,14 @@ export default function GuideChoixPage() {
         <h3>💰💰 500-800€ : le rapport qualité-prix</h3>
         <p>
           Le sweet spot du marché. Vous trouvez d&apos;excellents vélos de ville et VTT avec une
-          bonne autonomie (50-90 km). Le <strong>COLORWAY 26 pouces</strong> et le <strong>RCB RV10</strong>
+          bonne autonomie (50-90 km). Le <strong>COLORWAY 26 pouces</strong> et le <strong>RCB GK4</strong>
           sont dans cette gamme.
         </p>
 
         <h3>💰💰💰 800-1300€ : le milieu de gamme</h3>
         <p>
           Des vélos avec des composants de qualité supérieure : moteurs Bafang, freins hydrauliques,
-          grande autonomie. L&apos;<strong>ENGWE M20</strong> et l&apos;<strong>ESKUTE Netuno Plus</strong> brillent ici.
+          grande autonomie. L&apos;<strong>ENGWE M20</strong> et l&apos;<strong>Eleglide Mopride 2</strong> brillent ici.
         </p>
 
         <h2>3. L&apos;autonomie : le critère n°1</h2>
@@ -193,6 +209,20 @@ export default function GuideChoixPage() {
         <section className="section" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <div className="section-header"><h2>❓ Questions fréquentes</h2></div>
           <FAQ items={faqItems} />
+        </section>
+
+        <section style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+          <h2>🔗 Guides et comparatifs liés</h2>
+          <ul style={{ paddingLeft: "1.5rem", lineHeight: 2 }}>
+            <li><a href="/meilleur-velo-electrique">Comparatif complet des meilleurs vélos électriques 2026</a></li>
+            <li><a href="/meilleur-velo-electrique-ville">Meilleurs vélos électriques de ville</a></li>
+            <li><a href="/meilleur-velo-electrique-pliant">Meilleurs vélos électriques pliants</a></li>
+            <li><a href="/meilleur-vtt-electrique">Meilleurs VTT électriques</a></li>
+            <li><a href="/guide/aides-etat-achat-velo-electrique">Aides de l&apos;État : économisez sur votre achat</a></li>
+            <li><a href="/guide/legislation-assurance-velo-electrique">Législation et assurance VAE 2026</a></li>
+            <li><a href="/guide/reconditionnement-batterie-velo-electrique">Guide reconditionnement batterie</a></li>
+            <li><a href="/guide/entretien-velo-electrique">Entretien du vélo électrique</a></li>
+          </ul>
         </section>
       </div>
     </>

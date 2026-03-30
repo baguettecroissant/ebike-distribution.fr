@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { getProductsByCategory } from "../data/products";
 import { ComparisonTable, FeaturedProduct, ProsConsBox } from "../components/ProductComponents";
 import { FAQ } from "../components/FAQ";
+import { FAQSchema, BreadcrumbSchema } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Meilleur VTT Électrique 2026 : Comparatif & Avis",
-  description: "Comparatif des meilleurs VTT électriques 2026. ENGWE, ESKUTE, COLORWAY... VTT e-bikes pour le tout-terrain. Avis et meilleurs prix Amazon.",
+  description: "Comparatif des meilleurs VTT électriques 2026. ENGWE, Eleglide, COLORWAY... VTT e-bikes pour le tout-terrain. Avis et meilleurs prix Amazon.",
   alternates: { canonical: "/meilleur-vtt-electrique" },
 };
 
 const faqItems = [
-  { question: "Quel est le meilleur VTT électrique à moins de 1000€ ?", answer: "L'ESKUTE Netuno Plus est notre recommandation à moins de 1000€. Son moteur Bafang fiable, ses freins hydrauliques et son autonomie de 120 km en font le meilleur choix dans cette gamme de prix." },
+  { question: "Quel est le meilleur VTT électrique à moins de 1000€ ?", answer: "L'Eleglide Mopride 2 est notre recommandation à moins de 1000€. Sa batterie 18Ah offrant jusqu'à 150 km, ses freins hydrauliques et son équipement en font un excellent choix dans cette gamme de prix." },
   { question: "Fat bike ou VTT classique ?", answer: "Les fat bikes (pneus larges comme l'ENGWE M20) offrent plus de stabilité et d'adhérence sur terrain meuble (sable, neige, boue). Les VTT classiques 27.5/29 pouces sont plus légers et meilleurs sur les sentiers secs." },
   { question: "Peut-on utiliser un VTT électrique en ville ?", answer: "Absolument ! Un VTT électrique est très polyvalent. Sa suspension et ses pneus larges absorbent parfaitement les défauts de la chaussée urbaine (pavés, nids de poule). C'est simplement un peu plus lourd qu'un vélo de ville." },
 ];
@@ -21,6 +22,13 @@ export default function VTTPage() {
 
   return (
     <>
+      <FAQSchema items={faqItems} />
+      <BreadcrumbSchema items={[
+        { name: "Accueil", url: "/" },
+        { name: "Comparatifs", url: "/meilleur-velo-electrique" },
+        { name: "VTT électrique", url: "/meilleur-vtt-electrique" }
+      ]} />
+
       <div className="article-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -89,11 +97,23 @@ export default function VTTPage() {
           <FAQ items={faqItems} />
         </section>
 
-        <div className="cta-banner" style={{ marginBottom: "3rem" }}>
+        <div className="cta-banner" style={{ marginBottom: "1rem" }}>
           <h2>⛰️ L&apos;aventure électrique vous attend</h2>
           <p>Découvrez les VTT électriques au meilleur prix sur Amazon.</p>
-          <a href={`https://www.amazon.fr/dp/${featured.asin}?tag=ebike-distrib-21`} target="_blank" rel="nofollow noopener sponsored" className="btn btn-amazon">🛒 Voir le meilleur prix</a>
+          <a href={featured.affiliateUrl || `https://www.amazon.fr/dp/${featured.asin}?tag=ebike-distrib-21`} target="_blank" rel="nofollow noopener sponsored" className="btn btn-amazon">🛒 Voir le meilleur prix</a>
         </div>
+
+        <section className="section">
+          <h2>🔗 Voir aussi</h2>
+          <ul style={{ paddingLeft: "1.5rem", lineHeight: 2 }}>
+            <li><a href="/meilleur-velo-electrique">Comparatif général vélos électriques 2026</a></li>
+            <li><a href="/meilleur-velo-electrique-ville">Meilleurs vélos électriques de ville</a></li>
+            <li><a href="/meilleur-velo-electrique-pliant">Meilleurs vélos électriques pliants</a></li>
+            <li><a href="/guide/comment-choisir-velo-electrique">Guide d&apos;achat vélo électrique</a></li>
+            <li><a href="/guide/aides-etat-achat-velo-electrique">Aides de l&apos;État pour votre achat</a></li>
+            <li><a href="/guide/reconditionnement-batterie-velo-electrique">Reconditionnement batterie VAE</a></li>
+          </ul>
+        </section>
       </div>
     </>
   );

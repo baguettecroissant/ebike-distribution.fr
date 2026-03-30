@@ -10,5 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: "https://ebike-distribution.fr/sitemap.xml",
+    host: "https://ebike-distribution.fr",
   };
 }

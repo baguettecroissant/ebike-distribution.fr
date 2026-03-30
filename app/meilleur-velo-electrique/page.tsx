@@ -6,6 +6,7 @@ import {
   ProsConsBox,
 } from "../components/ProductComponents";
 import { FAQ } from "../components/FAQ";
+import { FAQSchema, BreadcrumbSchema, ItemListSchema } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Meilleur Vélo Électrique 2026 : Comparatif & Guide d'Achat",
@@ -23,12 +24,12 @@ const faqItems = [
   {
     question: "Quel vélo électrique choisir pour aller au travail ?",
     answer:
-      "Pour les trajets domicile-travail, un vélo pliant comme le HITWAY BK6S ou le RCB RV10 est idéal pour le multimodal (train + vélo). Pour des trajets plus longs, l'Eleglide T1 Step-Thru offre plus de confort.",
+      "Pour les trajets domicile-travail, un vélo pliant comme le HITWAY BK6S ou le RCB GK4 est idéal pour le multimodal (train + vélo). Pour des trajets plus longs, l'Eleglide T1 Step-Thru offre plus de confort.",
   },
   {
     question: "Les vélos électriques Amazon sont-ils fiables ?",
     answer:
-      "Oui, les marques vendues sur Amazon comme ENGWE, HITWAY, Eleglide ou ESKUTE ont fait leurs preuves avec des milliers d'avis positifs. La politique de retour 30 jours d'Amazon offre une protection supplémentaire.",
+      "Oui, les marques vendues sur Amazon comme ENGWE, HITWAY, Eleglide ou RCB ont fait leurs preuves avec des milliers d'avis positifs. La politique de retour 30 jours d'Amazon offre une protection supplémentaire.",
   },
   {
     question: "Quelle puissance de moteur choisir ?",
@@ -43,6 +44,18 @@ export default function MeilleurVeloElectriquePage() {
 
   return (
     <>
+      {/* JSON-LD Schemas */}
+      <FAQSchema items={faqItems} />
+      <BreadcrumbSchema items={[
+        { name: "Accueil", url: "/" },
+        { name: "Comparatif vélos électriques", url: "/meilleur-velo-electrique" }
+      ]} />
+      <ItemListSchema products={sorted.map(p => ({
+        name: p.name, description: p.summary, image: p.image,
+        brand: p.brand, price: p.price, rating: p.rating,
+        reviewCount: p.reviewCount, url: p.affiliateUrl || `https://www.amazon.fr/dp/${p.asin}?tag=ebike-distrib-21`
+      }))} />
+
       {/* Hero */}
       <div className="article-hero">
         <div className="container">
@@ -175,6 +188,41 @@ export default function MeilleurVeloElectriquePage() {
           <FAQ items={faqItems} />
         </section>
 
+        {/* Cross-linking - Maillage interne */}
+        <section className="section">
+          <h2>📂 Explorer par catégorie</h2>
+          <p style={{ marginBottom: "1.5rem" }}>Affinez votre recherche selon votre usage :</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
+            <a href="/meilleur-velo-electrique-ville" className="category-card" style={{ padding: "1.5rem" }}>
+              <span className="category-icon">🏙️</span>
+              <h3>Vélos de Ville</h3>
+              <p>Les meilleurs VAE pour vos trajets quotidiens urbains</p>
+            </a>
+            <a href="/meilleur-velo-electrique-pliant" className="category-card" style={{ padding: "1.5rem" }}>
+              <span className="category-icon">🔄</span>
+              <h3>Vélos Pliants</h3>
+              <p>Compacts et légers, idéaux pour le multimodal</p>
+            </a>
+            <a href="/meilleur-vtt-electrique" className="category-card" style={{ padding: "1.5rem" }}>
+              <span className="category-icon">⛰️</span>
+              <h3>VTT Électriques</h3>
+              <p>Puissance et robustesse pour le tout-terrain</p>
+            </a>
+          </div>
+        </section>
+
+        {/* Related Guides - Maillage */}
+        <section className="section">
+          <h2>📖 Guides complémentaires</h2>
+          <ul style={{ paddingLeft: "1.5rem", lineHeight: 2 }}>
+            <li><a href="/guide/comment-choisir-velo-electrique">Comment choisir son vélo électrique en 2026 (guide complet)</a></li>
+            <li><a href="/guide/aides-etat-achat-velo-electrique">Aides de l&apos;État : économisez jusqu&apos;à 3800€ sur votre achat</a></li>
+            <li><a href="/guide/legislation-assurance-velo-electrique">Législation et assurance VAE : ce qu&apos;il faut savoir</a></li>
+            <li><a href="/guide/entretien-velo-electrique">Comment entretenir son vélo électrique</a></li>
+            <li><a href="/guide/reconditionnement-batterie-velo-electrique">Reconditionnement batterie : prix et conseils</a></li>
+          </ul>
+        </section>
+
         {/* CTA finale */}
         <div className="cta-banner" style={{ marginBottom: "3rem" }}>
           <h2>🚲 Prêt à choisir votre vélo électrique ?</h2>
@@ -182,7 +230,7 @@ export default function MeilleurVeloElectriquePage() {
             Tous les vélos de notre sélection sont disponibles sur Amazon avec
             livraison gratuite et retours 30 jours.
           </p>
-          <a href="#" className="btn btn-amazon" onClick={undefined}>
+          <a href={`https://www.amazon.fr/dp/${featured.asin}?tag=ebike-distrib-21`} target="_blank" rel="nofollow noopener sponsored" className="btn btn-amazon">
             🛒 Voir les meilleurs prix sur Amazon
           </a>
         </div>
